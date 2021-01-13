@@ -137,8 +137,15 @@
     }
     if(item.classList[2] === "score"){
       const list1 = item.parentElement;
-      const nameValue = list1.firstChild;
-      console.log(nameValue);
+      const nameValue = list1.childNodes[0].value;
+      const placeValue = list1.childNodes[1].value;
+      const KillsValue = list1.childNodes[2].value;
+      const ScoreValue = list1.childNodes[3];
+
+      ScoreValue.innerText = ( 100-placeValue ) + (30 * KillsValue);
+
+
+      console.log(ScoreValue);
       
 
   
