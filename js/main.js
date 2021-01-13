@@ -70,54 +70,50 @@
     //player list item
     const newplayerListItem = document.createElement('li');
     newplayerListItem.classList.add('player-list-item');
-    // player div 
-    const playerDiv = document.createElement('div');
-    playerDiv.classList.add('player','input-group');
-    //player list items content
-    newplayerListItem.appendChild(playerDiv);
     //playerINputname
     const playerInputName = document.createElement('input');
     playerInputName.setAttribute('type','text');
     playerInputName.value = inputValue;
-    playerInputName.classList.add('form-control','playername');
-    playerDiv.appendChild(playerInputName);
+    playerInputName.placeholder ="Player Name"
+    playerInputName.classList.add('playername');
+    newplayerListItem.appendChild(playerInputName);
     //playerINputPlace
     const playerInputPlace = document.createElement('input');
     playerInputPlace.placeholder = "Finished Place";
     playerInputPlace.setAttribute('type','number');
-    playerInputPlace.classList.add('form-control','playerplace');
-    playerDiv.appendChild(playerInputPlace);
+    playerInputPlace.classList.add('playerplace');
+    newplayerListItem.appendChild(playerInputPlace);
     //playerINputKills
     const playerInputKills = document.createElement('input');
     playerInputKills.placeholder = "Kills";
     playerInputKills.setAttribute('type','number');
-    playerInputKills.classList.add('form-control','playerkills');
-    playerDiv.appendChild(playerInputKills);
+    playerInputKills.classList.add('playerkills');
+    newplayerListItem.appendChild(playerInputKills);
     //playerTotalScore
     const playerTotalScore = document.createElement('span');
     playerTotalScore.classList.add('btn','playertotal', 'btn-info');
     playerTotalScore.innerText = "Score";
-    playerDiv.appendChild(playerTotalScore);
+    newplayerListItem.appendChild(playerTotalScore);
     //scoreBtn
     const playerScoreBtn = document.createElement('button');
     playerScoreBtn.setAttribute('type','button');
     playerScoreBtn.classList.add('btn','btn-warning','score');
     playerScoreBtn.innerText = "Total";
-    playerDiv.appendChild(playerScoreBtn);
+    newplayerListItem.appendChild(playerScoreBtn);
     //resetBtn
     const playerResetBtn = document.createElement('button');
     playerResetBtn.setAttribute('type','button');
     playerResetBtn.classList.add('btn','btn-danger','reset');
     playerResetBtn.innerText = "Reset";
-    playerDiv.appendChild(playerResetBtn);
+    newplayerListItem.appendChild(playerResetBtn);
 
     //removePlayerBtn
     const removePlayerBtn = document.createElement('button');
     removePlayerBtn.setAttribute('type','button');
     removePlayerBtn.classList.add('btn','btn-danger','removePlayerBtn');
     removePlayerBtn.innerHTML = '<span class="fa fa-trash"></span>';
+    newplayerListItem.appendChild(removePlayerBtn);
 
-    playerDiv.appendChild(removePlayerBtn);
     ulList.appendChild(newplayerListItem);
 
     //clear top input value
@@ -140,9 +136,9 @@
       
     }
     if(item.classList[2] === "score"){
-      const inputnamevalue = document.querySelector(('[placeholder="Player name"]'));
-      
-      console.log(item.parentElement);
+      const inputnamevalue = document.querySelectorAll(('[placeholder="Player name"]'));
+      const parent = item.parentElement;
+      console.log(parent);
     
       
 
