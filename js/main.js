@@ -141,8 +141,8 @@
     }
     if(item.classList[2] === "score"){
       const inputnamevalue = document.querySelector(('[placeholder="Player name"]'));
-      const parent = item.parentElement.parentNode;
-      console.log(parent);
+      
+      console.log(item.parentElement);
     
       
 
