@@ -136,13 +136,11 @@
       
     }
     if(item.classList[2] === "score"){
-      const inputnamevalue = document.querySelectorAll(('[placeholder="Player name"]'));
-      const parent = item.parentElement;
-      console.log(parent);
-    
+      const list1 = item.parentElement;
+      const nameValue = list1.firstChild;
+      console.log(nameValue);
       
 
-    
   
     }
 
