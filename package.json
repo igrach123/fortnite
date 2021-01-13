@@ -1,0 +1,14 @@
+{
+  "name": "alo",
+  "version": "1.0.0",
+  "description": "fortnite tournament counter",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Igor Brajkovic",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.2"
+  }
+}

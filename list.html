@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="scss/style.css" />
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+    <h1 class='text-center'>FORTNITE TOURNAMENT - GAMEROOM HOTEL AMARIN</h1>
+    
+      <div class="container text-center">
+        <input type="text" class="input-player-name" id="input-value"> <button type="submit"  class="btn btn-danger addPlayerBtn" > <span class="fa fa-plus"></span> </button>
+      </div>
+      <br>
+
+    <div class="container-fluid">
+
+      <div class="player-container">
+        
+        <ul class="list-unstyled player-list" id="player-list" >
+          
+          <li class="player-list-item"> 
+            <div class="input-group player">            
+              
+              <input type="text" class="form-control playername" placeholder="Player name" >              
+              <input type="number" class="form-control playerplace" placeholder="Finished Place">           
+              <input type="number" class="form-control playerkills" placeholder="Kills">
+
+              <span  class=" playertotal btn btn-info" > Score </span>
+
+              <button type="button" class="btn btn-warning score" >Total</button>          
+              <button type="button"  class="btn btn-danger reset" >Reset</button>
+              <button type="button"  class="btn btn-danger removePlayerBtn" ><span class="fa fa-trash"></span></button>
+            </div>
+          </li>
+        
+        </ul>
+     
+
+        
+      </div>
+
+
+
+    </div>
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+    <!-- <script>  
+      
+      function myScore(){
+        var place = document.getElementById("place").value;
+        var kills = document.getElementById("kills").value;
+        var totalScore = (100-place) + (30 * kills);
+        document.getElementById("total").innerHTML = totalScore;       
+      }
+      function myReset(){
+        var place = document.getElementById("place");
+        var kills = document.getElementById("kills") ;
+        var totalScore =  document.getElementById("total");    
+        place.value = "";
+        kills.value = "";
+        totalScore.innerHTML = "TotalScore";
+      
+        
+      }
+
+    </script> -->
+  </body>
+</html>

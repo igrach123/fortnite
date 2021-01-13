@@ -1,0 +1,31 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+h1 {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+body {
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+}
+span {
+  margin-right: 5px;
+}
+label,
+input,
+button {
+  margin-right: 5px;
+}
+li {
+  margin-bottom: 7px;
+}
+.playertotal {
+  width: 200px;
+}
+.fa-plus,
+.fa-trash {
+  pointer-events: none;
+}

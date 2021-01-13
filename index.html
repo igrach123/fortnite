@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="scss/style.css" />
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+    <h1 class='text-center'>FORTNITE TOURNAMENT - GAMEROOM HOTEL AMARIN</h1>
+
+    <div class="container-fluid">
+
+      <div class="container">
+        
+        <ul class="list-unstyled list-id-1" >
+          <li> 
+            <div class="input-group">            
+              <label for="name" class="name-label form-control">Name</label>
+              <input type="text" class="form-control" id="name">
+              <label for="place" class="name-label form-control">Pos</label>
+              <input type="number" class="form-control"  id="place">
+              <label for="kills" class="name-label form-control">Kills</label>
+              <input type="number" class="form-control"  id="kills">
+              <span id="total" class=" btn btn-info "> TotalScore</span>
+              <button type="button" id="scoreBtn" class="btn btn-warning">Total</button>          
+              <button type="button" id="resetScore" class="btn btn-danger">Reset</button>
+            </div>
+          </li>
+          <li> 
+            <div class="input-group">            
+              <label for="name" class="name-label form-control">Name</label>
+              <input type="text" class="form-control" id="name2">
+              <label for="place" class="name-label form-control">Pos</label>
+              <input type="number" class="form-control"  id="place2">
+              <label for="kills" class="name-label form-control">Kills</label>
+              <input type="number" class="form-control"  id="kills2">
+              <span  class=" btn btn-info" id="total2"> TotalScore</span>
+              <button type="button" id="scoreBtn2" class="btn btn-warning">Total</button>          
+              <button type="button" id="resetScore2" class="btn btn-danger">Reset</button>
+            </div>
+          </li>
+        
+        </ul>
+     
+
+        
+      </div>
+
+
+
+    </div>
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+    <!-- <script>  
+      
+      function myScore(){
+        var place = document.getElementById("place").value;
+        var kills = document.getElementById("kills").value;
+        var totalScore = (100-place) + (30 * kills);
+        document.getElementById("total").innerHTML = totalScore;       
+      }
+      function myReset(){
+        var place = document.getElementById("place");
+        var kills = document.getElementById("kills") ;
+        var totalScore =  document.getElementById("total");    
+        place.value = "";
+        kills.value = "";
+        totalScore.innerHTML = "TotalScore";
+      
+        
+      }
+
+    </script> -->
+  </body>
+</html>
