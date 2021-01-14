@@ -58,13 +58,13 @@ document.addEventListener('keyup', function (e) {
     const playerScoreBtn = document.createElement('button');
     playerScoreBtn.setAttribute('type', 'button');
     playerScoreBtn.classList.add('btn', 'btn-warning', 'score');
-    playerScoreBtn.innerText = "Total";
+    playerScoreBtn.innerText = "T";
     newplayerListItem.appendChild(playerScoreBtn);
     //resetBtn
     const playerResetBtn = document.createElement('button');
     playerResetBtn.setAttribute('type', 'button');
     playerResetBtn.classList.add('btn', 'btn-danger', 'reset');
-    playerResetBtn.innerText = "Reset";
+    playerResetBtn.innerHTML = "R";
     newplayerListItem.appendChild(playerResetBtn);
 
     //removePlayerBtn
@@ -123,13 +123,13 @@ function addPlayer(event) {
   const playerScoreBtn = document.createElement('button');
   playerScoreBtn.setAttribute('type', 'button');
   playerScoreBtn.classList.add('btn', 'btn-warning', 'score');
-  playerScoreBtn.innerText = "Total";
+  playerScoreBtn.innerText = "T";
   newplayerListItem.appendChild(playerScoreBtn);
   //resetBtn
   const playerResetBtn = document.createElement('button');
   playerResetBtn.setAttribute('type', 'button');
   playerResetBtn.classList.add('btn', 'btn-danger', 'reset');
-  playerResetBtn.innerText = "Reset";
+  playerResetBtn.innerText = "R";
   newplayerListItem.appendChild(playerResetBtn);
 
   //removePlayerBtn
@@ -145,11 +145,11 @@ function addPlayer(event) {
   inputPlayerName.value = "";
 };
 
-///////delete player and count score
+///////  //watch for click on player list then do something
 function deletePlayer(e) {
   const item = e.target;
 
-  //delete item
+
   if (item.classList[2] === "removePlayerBtn") {
     const removeParent = item.parentElement;
     removeParent.remove();
@@ -179,16 +179,32 @@ function deletePlayer(e) {
     const ScoreValue = list1.childNodes[3];
     // SCORE VALUE CALCULATOR
     if (placeValue == 1) {
-      ScoreValue.innerText = (101 - placeValue) + (30 * KillsValue) + 100;
+      ScoreValue.innerText = (100 - placeValue) + (30 * KillsValue) + 100;
     } else if (placeValue == 2) {
-      ScoreValue.innerText = (100 - placeValue) + (30 * KillsValue) + 50;
+      ScoreValue.innerText = (100 - placeValue) + (30 * KillsValue) + 30;
     } else if (placeValue == 3) {
-      ScoreValue.innerText = (100 - placeValue) + (30 * KillsValue) + 25;
+      ScoreValue.innerText = (100 - placeValue) + (30 * KillsValue) + 10;
     } else {
       ScoreValue.innerText = (100 - placeValue) + (30 * KillsValue);
     };
 
+    //create a list item with scores only
+    const ulStandings = document.getElementById('player-standings');
 
+    //standings list item
+    const playedListItem = document.createElement('li');
+    playedListItem.classList.add('standing-list-item');
+    ulStandings.appendChild(playedListItem);
+
+    const playedName = document.createElement ('span');
+    playedName.classList.add('played-name');
+    playedName.innerText = nameValue;
+    playedListItem.appendChild(playedName);
+
+    const playedScore = document.createElement('span');
+    playedScore.classList.add('played-score');
+    playedScore.innerText = ScoreValue.innerText;
+    playedListItem.appendChild(playedScore);
 
   }
 

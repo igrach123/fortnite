@@ -5,9 +5,9 @@
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
   <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="scss/style.css" />
 
   <title>Hello, world!</title>
@@ -25,16 +25,22 @@
 
   <div class="container-fluid">
 
-    <div class="player-container">
-
-      <ul class="list-unstyled player-list text-center" id="player-list">
-
-
-
-      </ul>
-
-
-
+    <div class="player-container row">
+       
+          <div class="col-sm-8">
+            <h5 class="text-center">
+              PLAYING
+            </h5>
+            <ul class="list-unstyled player-list text-center" id="player-list">
+            </ul>
+        </div>
+        <div class="col-sm-4">
+          <h5 class="text-center">
+            STANDINGS
+          </h5>
+          <ul id="player-standings" class="list-unstyled text-center">
+          </ul>
+        </div>
     </div>
 
 
