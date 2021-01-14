@@ -11,6 +11,7 @@ const countScoreBtn = document.querySelector('.score');
 const resetScoreBtn = document.querySelector('.reset');
 const addPlayerBtn = document.querySelector('.addPlayerBtn');
 const removePlayerBtn = document.querySelector('.removePlayerBtn');
+const filterOption = document.querySelector('.filter');
 // EVENT LISTENERS
 
 addPlayerBtn.addEventListener("click", addPlayer);
@@ -80,6 +81,7 @@ document.addEventListener('keyup', function (e) {
     inputPlayerName.value = "";
   }
 });
+filterOption.addEventListener('click', filterScore )
 
 // FUNCTIONS
 
@@ -153,6 +155,7 @@ function deletePlayer(e) {
   if (item.classList[2] === "removePlayerBtn") {
     const removeParent = item.parentElement;
     removeParent.remove();
+
   }
 
   if (item.classList[2] === "reset") {
@@ -209,3 +212,19 @@ function deletePlayer(e) {
   }
 
 }
+
+//filter function
+
+function filterScore(e) {
+  const ulStandings = document.getElementById('player-standings');
+  const standingList = ulStandings.childNodes;
+
+
+    console.log(standingList[2].childNodes);
+  
+}
+
+// muri
+var grid = new Muuri('.grid',{dragEnabled: true});
+
+ 
