@@ -1,5 +1,4 @@
 
-
 // SELECTORS
 const listItem = document.querySelector('ul');
 const newplayerItem = document.querySelector('li');
@@ -81,7 +80,7 @@ document.addEventListener('keyup', function (e) {
     inputPlayerName.value = "";
   }
 });
-filterOption.addEventListener('click', filterScore )
+filterOption.addEventListener('click', filterScore)
 
 // FUNCTIONS
 
@@ -197,9 +196,10 @@ function deletePlayer(e) {
     //standings list item
     const playedListItem = document.createElement('li');
     playedListItem.classList.add('standing-list-item');
+    playedListItem.dataset.indexNumber = ScoreValue.innerText;
     ulStandings.appendChild(playedListItem);
 
-    const playedName = document.createElement ('span');
+    const playedName = document.createElement('span');
     playedName.classList.add('played-name');
     playedName.innerText = nameValue;
     playedListItem.appendChild(playedName);
@@ -208,6 +208,7 @@ function deletePlayer(e) {
     playedScore.classList.add('played-score');
     playedScore.innerText = ScoreValue.innerText;
     playedListItem.appendChild(playedScore);
+
 
   }
 
@@ -218,13 +219,15 @@ function deletePlayer(e) {
 function filterScore(e) {
   const ulStandings = document.getElementById('player-standings');
   const standingList = ulStandings.childNodes;
+  //array od scorova i imena
+  const array = Array.from(standingList);
 
+  array.sort(function (a, b) { return a - b });
 
-    console.log(standingList[2].childNodes);
-  
+  console.log(array);
+
 }
 
-// muri
-var grid = new Muuri('.grid',{dragEnabled: true});
 
- 
+
+
