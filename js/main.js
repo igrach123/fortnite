@@ -51,19 +51,19 @@ document.addEventListener('keyup', function (e) {
     newplayerListItem.appendChild(playerInputKills);
     //playerTotalScore
     const playerTotalScore = document.createElement('span');
-    playerTotalScore.classList.add('btn', 'playertotal', 'btn-info');
+    playerTotalScore.classList.add('playertotal',);
     playerTotalScore.innerText = "Score";
     newplayerListItem.appendChild(playerTotalScore);
     //scoreBtn
     const playerScoreBtn = document.createElement('button');
     playerScoreBtn.setAttribute('type', 'button');
-    playerScoreBtn.classList.add('btn', 'btn-warning', 'score');
+    playerScoreBtn.classList.add('btn', 'btn-info', 'score');
     playerScoreBtn.innerText = "T";
     newplayerListItem.appendChild(playerScoreBtn);
     //resetBtn
     const playerResetBtn = document.createElement('button');
     playerResetBtn.setAttribute('type', 'button');
-    playerResetBtn.classList.add('btn', 'btn-danger', 'reset');
+    playerResetBtn.classList.add('btn', 'btn-warning', 'reset');
     playerResetBtn.innerHTML = "R";
     newplayerListItem.appendChild(playerResetBtn);
 
@@ -117,19 +117,19 @@ function addPlayer(event) {
   newplayerListItem.appendChild(playerInputKills);
   //playerTotalScore
   const playerTotalScore = document.createElement('span');
-  playerTotalScore.classList.add('btn', 'playertotal', 'btn-info');
+  playerTotalScore.classList.add('playertotal');
   playerTotalScore.innerText = "Score";
   newplayerListItem.appendChild(playerTotalScore);
   //scoreBtn
   const playerScoreBtn = document.createElement('button');
   playerScoreBtn.setAttribute('type', 'button');
-  playerScoreBtn.classList.add('btn', 'btn-warning', 'score');
+  playerScoreBtn.classList.add('btn', 'btn-info', 'score');
   playerScoreBtn.innerText = "T";
   newplayerListItem.appendChild(playerScoreBtn);
   //resetBtn
   const playerResetBtn = document.createElement('button');
   playerResetBtn.setAttribute('type', 'button');
-  playerResetBtn.classList.add('btn', 'btn-danger', 'reset');
+  playerResetBtn.classList.add('btn', 'btn-warning', 'reset');
   playerResetBtn.innerText = "R";
   newplayerListItem.appendChild(playerResetBtn);
 
