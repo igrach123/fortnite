@@ -199,17 +199,23 @@ function deletePlayer(e) {
     const playedListItem = document.createElement('li');
     playedListItem.classList.add('standing-list-item');
     playedListItem.dataset.indexNumber = ScoreValue.innerText;
+
     const spanScore = document.createElement('span');
     spanScore.classList.add('score-span');
     spanScore.innerHTML = ScoreValue.innerText;
     playedListItem.appendChild(spanScore);
+
     const spanName = document.createElement('span');
     spanName.classList.add('name-span');
     spanName.innerHTML = nameValue;
     playedListItem.appendChild(spanName);
 
+    const stBtn = document.createElement('button');
+    stBtn.classList.add('delete-standing');
+    stBtn.innerHTML = "x";
+    playedListItem.appendChild(stBtn);
 
-    // playedListItem.innerHTML = "<span class='score-span'>" + ScoreValue.innerText + "</span>" + "  " + "<span class='name-span'>" + nameValue + "</span>" + "<button class='delete-standing fa fa-times-circle'></button>";
+
     ulStandings.appendChild(playedListItem);
 
 
