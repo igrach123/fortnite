@@ -197,17 +197,8 @@ function deletePlayer(e) {
     const playedListItem = document.createElement('li');
     playedListItem.classList.add('standing-list-item');
     playedListItem.dataset.indexNumber = ScoreValue.innerText;
+    playedListItem.innerHTML = ScoreValue.innerText + " - " + nameValue;
     ulStandings.appendChild(playedListItem);
-
-    const playedName = document.createElement('span');
-    playedName.classList.add('played-name');
-    playedName.innerText = nameValue;
-    playedListItem.appendChild(playedName);
-
-    const playedScore = document.createElement('span');
-    playedScore.classList.add('played-score');
-    playedScore.innerText = ScoreValue.innerText;
-    playedListItem.appendChild(playedScore);
 
 
   }
@@ -217,16 +208,49 @@ function deletePlayer(e) {
 //filter function
 
 function filterScore(e) {
-  const ulStandings = document.getElementById('player-standings');
-  const standingList = ulStandings.childNodes;
-  //array od scorova i imena
-  const array = Array.from(standingList);
+  let AssendingSort = false;
+  let result;
+  let temp = "";
+  let sortedList;
 
-  array.sort(function (a, b) { return a - b });
 
-  console.log(array);
+  // const ulStandings = document.getElementById('player-standings');
+  // const standingList = ulStandings.childNodes;
+  // //array od scorova i imena
+  // const list = Array.from(standingList);
+  // list.sort().reverse();
+
+  // var arrayLength = list.length;
+  // for (var i = 0; i < arrayLength; i++) {
+  //   console.log(list[i]);
+  //   //Do something
+
+  sortList(document.getElementById('player-standings'));
+
+  function sortList(ul) {
+    var new_ul = ul.cloneNode(false);
+
+    // Add all lis to an array
+    var lis = [];
+    for (var i = ul.childNodes.length; i--;) {
+      if (ul.childNodes[i].nodeName === 'LI')
+        lis.push(ul.childNodes[i]);
+    }
+
+    // Sort the lis in descending order
+    lis.sort(function (a, b) {
+      return parseInt(b.childNodes[0].data, 10) -
+        parseInt(a.childNodes[0].data, 10);
+    });
+
+    // Add them into the ul in order
+    for (var i = 0; i < lis.length; i++)
+      new_ul.appendChild(lis[i]);
+    ul.parentNode.replaceChild(new_ul, ul);
+  }
 
 }
+
 
 
 
