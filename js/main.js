@@ -1,4 +1,5 @@
 
+
 // SELECTORS
 const listItem = document.querySelector('ul');
 const newplayerItem = document.querySelector('li');
@@ -158,7 +159,7 @@ function deletePlayer(e) {
   }
 
   if (item.classList[2] === "reset") {
-    console.log('you presssed reset');
+
     const list1 = item.parentElement;
     const nameValue = list1.childNodes[0];
     const placeValue = list1.childNodes[1];
@@ -172,6 +173,7 @@ function deletePlayer(e) {
     console.log(nameValue);
 
   }
+
 
   if (item.classList[2] === "score") {
     const list1 = item.parentElement;
@@ -197,9 +199,25 @@ function deletePlayer(e) {
     const playedListItem = document.createElement('li');
     playedListItem.classList.add('standing-list-item');
     playedListItem.dataset.indexNumber = ScoreValue.innerText;
-    playedListItem.innerHTML = ScoreValue.innerText + " - " + nameValue;
+    const spanScore = document.createElement('span');
+    spanScore.classList.add('score-span');
+    spanScore.innerHTML = ScoreValue.innerText;
+    playedListItem.appendChild(spanScore);
+    const spanName = document.createElement('span');
+    spanName.classList.add('name-span');
+    spanName.innerHTML = nameValue;
+    playedListItem.appendChild(spanName);
+
+
+    // playedListItem.innerHTML = "<span class='score-span'>" + ScoreValue.innerText + "</span>" + "  " + "<span class='name-span'>" + nameValue + "</span>" + "<button class='delete-standing fa fa-times-circle'></button>";
     ulStandings.appendChild(playedListItem);
 
+
+  }
+  if (item.classList[2] === "fa-times-circle") {
+    console.log('item');
+    // const removeParent = item.parentElement;
+    // removeParent.remove();
 
   }
 
@@ -213,17 +231,6 @@ function filterScore(e) {
   let temp = "";
   let sortedList;
 
-
-  // const ulStandings = document.getElementById('player-standings');
-  // const standingList = ulStandings.childNodes;
-  // //array od scorova i imena
-  // const list = Array.from(standingList);
-  // list.sort().reverse();
-
-  // var arrayLength = list.length;
-  // for (var i = 0; i < arrayLength; i++) {
-  //   console.log(list[i]);
-  //   //Do something
 
   sortList(document.getElementById('player-standings'));
 
