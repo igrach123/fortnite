@@ -4,12 +4,23 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 h1 {
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 body {
-  background-color: #fbab7e;
-  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+  background: #8360c3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2ebf91,
+    #8360c3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2ebf91,
+    #8360c3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 span {
   margin-right: 5px;
@@ -18,6 +29,9 @@ label,
 input,
 button {
   margin-right: 2px;
+}
+input {
+  text-shadow: none;
 }
 li {
   margin-bottom: 2px;
@@ -48,7 +62,7 @@ select {
   box-shadow: none;
   border: none;
   cursor: pointer;
-  color: #fbab7e;
+  color: #3095e7;
   padding: 4px;
   margin: 4px;
 }
@@ -68,17 +82,38 @@ select {
   color: #fff;
   cursor: pointer;
 }
-.item.muuri-item-dragging {
-  z-index: 3;
+.playertotal {
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: $purple;
+  padding: 8px;
+  color: $white;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 75px;
+  padding-bottom: 10px;
+  display: inline-block;
 }
-.item.muuri-item-releasing {
-  z-index: 2;
+input.playerplace {
+  width: 75px;
 }
-.item.muuri-item-hidden {
-  z-index: 0;
+input.playerkills {
+  width: 75px;
 }
-.item-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.score-span {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: lightgray;
+  text-align: left;
+  text-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+.name-span {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2ebf91;
+  text-transform: uppercase;
+  text-align: right;
+}
+.standing-list-item {
+  line-height: 0.1;
 }

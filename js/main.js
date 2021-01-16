@@ -12,6 +12,7 @@ const resetScoreBtn = document.querySelector('.reset');
 const addPlayerBtn = document.querySelector('.addPlayerBtn');
 const removePlayerBtn = document.querySelector('.removePlayerBtn');
 const filterOption = document.querySelector('.filter');
+
 // EVENT LISTENERS
 
 addPlayerBtn.addEventListener("click", addPlayer);
@@ -35,12 +36,12 @@ document.addEventListener('keyup', function (e) {
     const playerInputName = document.createElement('input');
     playerInputName.setAttribute('type', 'text');
     playerInputName.value = inputValue;
-    playerInputName.placeholder = "Player Name"
+    playerInputName.placeholder = "Player Name";
     playerInputName.classList.add('playername');
     newplayerListItem.appendChild(playerInputName);
     //playerINputPlace
     const playerInputPlace = document.createElement('input');
-    playerInputPlace.placeholder = "Finished Place";
+    playerInputPlace.placeholder = "Place";
     playerInputPlace.setAttribute('type', 'number');
     playerInputPlace.classList.add('playerplace');
     newplayerListItem.appendChild(playerInputPlace);
@@ -52,19 +53,19 @@ document.addEventListener('keyup', function (e) {
     newplayerListItem.appendChild(playerInputKills);
     //playerTotalScore
     const playerTotalScore = document.createElement('span');
-    playerTotalScore.classList.add('btn', 'playertotal', 'btn-info');
+    playerTotalScore.classList.add('playertotal',);
     playerTotalScore.innerText = "Score";
     newplayerListItem.appendChild(playerTotalScore);
     //scoreBtn
     const playerScoreBtn = document.createElement('button');
     playerScoreBtn.setAttribute('type', 'button');
-    playerScoreBtn.classList.add('btn', 'btn-warning', 'score');
+    playerScoreBtn.classList.add('btn', 'btn-info', 'score');
     playerScoreBtn.innerText = "T";
     newplayerListItem.appendChild(playerScoreBtn);
     //resetBtn
     const playerResetBtn = document.createElement('button');
     playerResetBtn.setAttribute('type', 'button');
-    playerResetBtn.classList.add('btn', 'btn-danger', 'reset');
+    playerResetBtn.classList.add('btn', 'btn-warning', 'reset');
     playerResetBtn.innerHTML = "R";
     newplayerListItem.appendChild(playerResetBtn);
 
@@ -81,7 +82,7 @@ document.addEventListener('keyup', function (e) {
     inputPlayerName.value = "";
   }
 });
-filterOption.addEventListener('click', filterScore )
+filterOption.addEventListener('click', filterScore)
 
 // FUNCTIONS
 
@@ -106,7 +107,7 @@ function addPlayer(event) {
   newplayerListItem.appendChild(playerInputName);
   //playerINputPlace
   const playerInputPlace = document.createElement('input');
-  playerInputPlace.placeholder = "Finished Place";
+  playerInputPlace.placeholder = "Place";
   playerInputPlace.setAttribute('type', 'number');
   playerInputPlace.classList.add('playerplace');
   newplayerListItem.appendChild(playerInputPlace);
@@ -118,19 +119,19 @@ function addPlayer(event) {
   newplayerListItem.appendChild(playerInputKills);
   //playerTotalScore
   const playerTotalScore = document.createElement('span');
-  playerTotalScore.classList.add('btn', 'playertotal', 'btn-info');
+  playerTotalScore.classList.add('playertotal');
   playerTotalScore.innerText = "Score";
   newplayerListItem.appendChild(playerTotalScore);
   //scoreBtn
   const playerScoreBtn = document.createElement('button');
   playerScoreBtn.setAttribute('type', 'button');
-  playerScoreBtn.classList.add('btn', 'btn-warning', 'score');
+  playerScoreBtn.classList.add('btn', 'btn-info', 'score');
   playerScoreBtn.innerText = "T";
   newplayerListItem.appendChild(playerScoreBtn);
   //resetBtn
   const playerResetBtn = document.createElement('button');
   playerResetBtn.setAttribute('type', 'button');
-  playerResetBtn.classList.add('btn', 'btn-danger', 'reset');
+  playerResetBtn.classList.add('btn', 'btn-warning', 'reset');
   playerResetBtn.innerText = "R";
   newplayerListItem.appendChild(playerResetBtn);
 
@@ -150,7 +151,7 @@ function addPlayer(event) {
 ///////  //watch for click on player list then do something
 function deletePlayer(e) {
   const item = e.target;
-
+  console.log(item);
 
   if (item.classList[2] === "removePlayerBtn") {
     const removeParent = item.parentElement;
@@ -159,7 +160,7 @@ function deletePlayer(e) {
   }
 
   if (item.classList[2] === "reset") {
-    console.log('you presssed reset');
+
     const list1 = item.parentElement;
     const nameValue = list1.childNodes[0];
     const placeValue = list1.childNodes[1];
@@ -173,6 +174,7 @@ function deletePlayer(e) {
     console.log(nameValue);
 
   }
+
 
   if (item.classList[2] === "score") {
     const list1 = item.parentElement;
@@ -197,34 +199,72 @@ function deletePlayer(e) {
     //standings list item
     const playedListItem = document.createElement('li');
     playedListItem.classList.add('standing-list-item');
+    playedListItem.dataset.indexNumber = ScoreValue.innerText;
+
+    const spanScore = document.createElement('span');
+    spanScore.classList.add('score-span');
+    spanScore.innerHTML = ScoreValue.innerText;
+    playedListItem.appendChild(spanScore);
+
+    const spanName = document.createElement('span');
+    spanName.classList.add('name-span');
+    spanName.innerHTML = nameValue;
+    playedListItem.appendChild(spanName);
+
+
     ulStandings.appendChild(playedListItem);
 
-    const playedName = document.createElement ('span');
-    playedName.classList.add('played-name');
-    playedName.innerText = nameValue;
-    playedListItem.appendChild(playedName);
-
-    const playedScore = document.createElement('span');
-    playedScore.classList.add('played-score');
-    playedScore.innerText = ScoreValue.innerText;
-    playedListItem.appendChild(playedScore);
 
   }
+
 
 }
 
 //filter function
 
 function filterScore(e) {
-  const ulStandings = document.getElementById('player-standings');
-  const standingList = ulStandings.childNodes;
+  let AssendingSort = false;
+  let result;
+  let temp = "";
+  let sortedList;
 
 
-    console.log(standingList[2].childNodes);
-  
+  sortList(document.getElementById('player-standings'));
+
+  function sortList(ul) {
+    var new_ul = ul.cloneNode(false);
+
+    // Add all lis to an array
+    var lis = [];
+    for (var i = ul.childNodes.length; i--;) {
+      if (ul.childNodes[i].nodeName === 'LI')
+        lis.push(ul.childNodes[i]);
+    }
+
+    // Sort the lis in descending order
+    lis.sort(function (a, b) {
+      // return parseInt(b.childNodes[0].data, 10) -
+      //   parseInt(a.childNodes[0].data, 10);
+      return b-a
+    });
+
+    // Add them into the ul in order
+    for (var i = 0; i < lis.length; i++)
+      new_ul.appendChild(lis[i]);
+    ul.parentNode.replaceChild(new_ul, ul);
+  }
+
 }
 
-// muri
-var grid = new Muuri('.grid',{dragEnabled: true});
+const stResBtn = document.getElementById('st-reset-button');
+stResBtn.addEventListener('click', resetStBtn);
 
- 
+function resetStBtn(e) {
+  const ulStandings = document.getElementById('player-standings');
+  console.log('klciked reset')
+  ulStandings.innerHTML = "";
+}
+
+
+
+
