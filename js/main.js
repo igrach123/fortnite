@@ -36,12 +36,12 @@ document.addEventListener('keyup', function (e) {
     const playerInputName = document.createElement('input');
     playerInputName.setAttribute('type', 'text');
     playerInputName.value = inputValue;
-    playerInputName.placeholder = "Player Name"
+    playerInputName.placeholder = "Player Name";
     playerInputName.classList.add('playername');
     newplayerListItem.appendChild(playerInputName);
     //playerINputPlace
     const playerInputPlace = document.createElement('input');
-    playerInputPlace.placeholder = "Finished Place";
+    playerInputPlace.placeholder = "Place";
     playerInputPlace.setAttribute('type', 'number');
     playerInputPlace.classList.add('playerplace');
     newplayerListItem.appendChild(playerInputPlace);
@@ -107,7 +107,7 @@ function addPlayer(event) {
   newplayerListItem.appendChild(playerInputName);
   //playerINputPlace
   const playerInputPlace = document.createElement('input');
-  playerInputPlace.placeholder = "Finished Place";
+  playerInputPlace.placeholder = "Place";
   playerInputPlace.setAttribute('type', 'number');
   playerInputPlace.classList.add('playerplace');
   newplayerListItem.appendChild(playerInputPlace);
@@ -216,12 +216,7 @@ function deletePlayer(e) {
 
 
   }
-  if (item.classList[0] === "fa-times-circle") {
-    console.log('item');
-    // const removeParent = item.parentElement;
-    // removeParent.remove();
 
-  }
 
 }
 
@@ -248,8 +243,9 @@ function filterScore(e) {
 
     // Sort the lis in descending order
     lis.sort(function (a, b) {
-      return parseInt(b.childNodes[0].data, 10) -
-        parseInt(a.childNodes[0].data, 10);
+      // return parseInt(b.childNodes[0].data, 10) -
+      //   parseInt(a.childNodes[0].data, 10);
+      return b-a
     });
 
     // Add them into the ul in order

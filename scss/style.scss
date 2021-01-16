@@ -8,12 +8,19 @@ h1 {
   margin-bottom: 0;
 }
 body {
-  background: #8360c3;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #8360c3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2ebf91,
+    #8360c3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2ebf91,
+    #8360c3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 span {
   margin-right: 5px;
@@ -23,8 +30,7 @@ input,
 button {
   margin-right: 2px;
 }
-input{
-  
+input {
   text-shadow: none;
 }
 li {
@@ -61,13 +67,12 @@ select {
   margin: 4px;
 }
 
-h5{
+h5 {
   font-weight: bold;
   letter-spacing: 5px;
   font-size: 2rem;
-  
 }
-.playertotal{
+.playertotal {
   margin-right: 5px;
   margin-left: 5px;
   background-color: $purple;
@@ -78,23 +83,23 @@ h5{
   width: 75px;
   padding-bottom: 10px;
 }
-input.playerplace{
-  width: 50px;
+input.playerplace {
+  width: 75px;
 }
-input.playerkills{
-  width: 50px;
+input.playerkills {
+  width: 75px;
 }
-.score-span{
+.score-span {
   font-size: 2.3rem;
   font-weight: 900;
   color: lightgray;
   text-align: left;
-  text-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);;
+  text-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
-.name-span{
+.name-span {
   font-size: 1.4rem;
   font-weight: 700;
-  color:#2ebf91;
+  color: #2ebf91;
   text-transform: uppercase;
   text-align: right;
 }
