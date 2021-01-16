@@ -10827,6 +10827,7 @@ li {
   width: 100px;
 }
 
+
 .fa-plus,
 .fa-trash {
   pointer-events: none;
@@ -10889,4 +10890,5 @@ select {
   width: 100%;
   height: 100%;
 }
+
 /*# sourceMappingURL=style.css.map */
