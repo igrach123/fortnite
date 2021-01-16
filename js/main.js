@@ -12,6 +12,7 @@ const resetScoreBtn = document.querySelector('.reset');
 const addPlayerBtn = document.querySelector('.addPlayerBtn');
 const removePlayerBtn = document.querySelector('.removePlayerBtn');
 const filterOption = document.querySelector('.filter');
+
 // EVENT LISTENERS
 
 addPlayerBtn.addEventListener("click", addPlayer);
@@ -150,7 +151,7 @@ function addPlayer(event) {
 ///////  //watch for click on player list then do something
 function deletePlayer(e) {
   const item = e.target;
-
+  console.log(item);
 
   if (item.classList[2] === "removePlayerBtn") {
     const removeParent = item.parentElement;
@@ -210,17 +211,12 @@ function deletePlayer(e) {
     spanName.innerHTML = nameValue;
     playedListItem.appendChild(spanName);
 
-    const stBtn = document.createElement('button');
-    stBtn.classList.add('delete-standing');
-    stBtn.innerHTML = "x";
-    playedListItem.appendChild(stBtn);
-
 
     ulStandings.appendChild(playedListItem);
 
 
   }
-  if (item.classList[2] === "fa-times-circle") {
+  if (item.classList[0] === "fa-times-circle") {
     console.log('item');
     // const removeParent = item.parentElement;
     // removeParent.remove();
@@ -264,6 +260,14 @@ function filterScore(e) {
 
 }
 
+const stResBtn = document.getElementById('st-reset-button');
+stResBtn.addEventListener('click', resetStBtn);
+
+function resetStBtn(e) {
+  const ulStandings = document.getElementById('player-standings');
+  console.log('klciked reset')
+  ulStandings.innerHTML = "";
+}
 
 
 
