@@ -10805,6 +10805,7 @@ h1 {
 }
 
 body {
+  line-height: 1;
   background: #8360c3;
   /* fallback for old browsers */
   /* Chrome 10-25, Safari 5.1-6 */
