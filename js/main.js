@@ -14,9 +14,11 @@ const removePlayerBtn = document.querySelector('.removePlayerBtn');
 const filterOption = document.querySelector('.filter');
 
 // EVENT LISTENERS
-
+document.addEventListener('DOMContentLoaded', getLsPlayers);
 addPlayerBtn.addEventListener("click", addPlayer);
 listItem.addEventListener("click", deletePlayer);
+
+//add player on push enter
 document.addEventListener('keyup', function (e) {
   if (e.keyCode === 13) {
 
@@ -77,6 +79,8 @@ document.addEventListener('keyup', function (e) {
     newplayerListItem.appendChild(removePlayerBtn);
 
     ulList.appendChild(newplayerListItem);
+      //add to local storage
+     LSPlayers(playerInputName.value );
 
     //clear top input value
     inputPlayerName.value = "";
@@ -86,7 +90,7 @@ filterOption.addEventListener('click', filterScore)
 
 // FUNCTIONS
 
-//////add new player
+//////add new player on click with mouse
 function addPlayer(event) {
   event.preventDefault();
 
@@ -123,6 +127,8 @@ function addPlayer(event) {
   playerTotalScore.innerText = "Score";
   newplayerListItem.appendChild(playerTotalScore);
   //scoreBtn
+
+
   const playerScoreBtn = document.createElement('button');
   playerScoreBtn.setAttribute('type', 'button');
   playerScoreBtn.classList.add('btn', 'btn-info', 'score');
@@ -144,6 +150,9 @@ function addPlayer(event) {
 
   ulList.appendChild(newplayerListItem);
 
+  //add to local storage
+ LSPlayers(playerInputName.value );
+
   //clear top input value
   inputPlayerName.value = "";
 };
@@ -151,11 +160,11 @@ function addPlayer(event) {
 ///////  //watch for click on player list then do something
 function deletePlayer(e) {
   const item = e.target;
-  console.log(item);
 
   if (item.classList[2] === "removePlayerBtn") {
-    const removeParent = item.parentElement;
-    removeParent.remove();
+    const LSPlayer = item.parentElement;
+    removeLS(LSPlayer);
+    LSPlayer.remove();
 
   }
 
@@ -266,5 +275,106 @@ function resetStBtn(e) {
 }
 
 
+//save to local storage
+function LSPlayers(LSPlayer){
+  //check if tehre is a list
+  let LSPlayers;
+  if(localStorage.getItem('LSPlayers') === null){
+    LSPlayers = [];
+  }else{
+    LSPlayers = JSON.parse(localStorage.getItem('LSPlayers'));
+  }
+  LSPlayers.push(LSPlayer);
+  localStorage.setItem('LSPlayers', JSON.stringify(LSPlayers));
+
+};
+
+//get players from local storage
+ function getLsPlayers(){
+  let LSPlayers;
+  if(localStorage.getItem('LSPlayers') === null){
+    LSPlayers = [];
+  }else{
+    LSPlayers = JSON.parse(localStorage.getItem('LSPlayers'));
+
+  }
+  
+  LSPlayers.forEach(function(LSPlayer){
+    const ulList = document.getElementById('player-list');
+    const inputPlayerName = document.getElementById('input-value');
+    const inputValue = inputPlayerName.value;
+  
+  
+    //player list item
+    const newplayerListItem = document.createElement('li');
+    newplayerListItem.classList.add('player-list-item');
+    //playerINputname
+    const playerInputName = document.createElement('input');
+    playerInputName.setAttribute('type', 'text');
+    playerInputName.value = LSPlayer;
+    playerInputName.placeholder = "Player Name"
+    playerInputName.classList.add('playername');
+    newplayerListItem.appendChild(playerInputName);
+    //playerINputPlace
+    const playerInputPlace = document.createElement('input');
+    playerInputPlace.placeholder = "Place";
+    playerInputPlace.setAttribute('type', 'number');
+    playerInputPlace.classList.add('playerplace');
+    newplayerListItem.appendChild(playerInputPlace);
+    //playerINputKills
+    const playerInputKills = document.createElement('input');
+    playerInputKills.placeholder = "Kills";
+    playerInputKills.setAttribute('type', 'number');
+    playerInputKills.classList.add('playerkills');
+    newplayerListItem.appendChild(playerInputKills);
+    //playerTotalScore
+    const playerTotalScore = document.createElement('span');
+    playerTotalScore.classList.add('playertotal');
+    playerTotalScore.innerText = "Score";
+    newplayerListItem.appendChild(playerTotalScore);
+    //scoreBtn
+    const playerScoreBtn = document.createElement('button');
+    playerScoreBtn.setAttribute('type', 'button');
+    playerScoreBtn.classList.add('btn', 'btn-info', 'score');
+    playerScoreBtn.innerText = "T";
+    newplayerListItem.appendChild(playerScoreBtn);
+    //resetBtn
+    const playerResetBtn = document.createElement('button');
+    playerResetBtn.setAttribute('type', 'button');
+    playerResetBtn.classList.add('btn', 'btn-warning', 'reset');
+    playerResetBtn.innerText = "R";
+    newplayerListItem.appendChild(playerResetBtn);
+  
+    //removePlayerBtn
+    const removePlayerBtn = document.createElement('button');
+    removePlayerBtn.setAttribute('type', 'button');
+    removePlayerBtn.classList.add('btn', 'btn-danger', 'removePlayerBtn');
+    removePlayerBtn.innerHTML = '<span class="fa fa-trash"></span>';
+    newplayerListItem.appendChild(removePlayerBtn);
+  
+    ulList.appendChild(newplayerListItem);
 
 
+  });
+ }
+
+ //remove local storage lsplayer
+ function removeLS(LSPlayer){
+  let LSPlayers;
+  if(localStorage.getItem('LSPlayers') === null){
+    LSPlayers = [];
+  }else{
+    LSPlayers = JSON.parse(localStorage.getItem('LSPlayers'));
+    
+  }
+  console.log(LSPlayer.children[0].value);
+    const playerIndex = LSPlayer.children[0].value;
+    LSPlayers.splice(LSPlayers.indexOf(playerIndex),1);
+    localStorage.setItem('LSPlayers', JSON.stringify(LSPlayers));
+}
+  /* const PlayerIndex =  *
+
+
+
+
+/*  localStorage.clear() */
