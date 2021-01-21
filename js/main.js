@@ -151,7 +151,7 @@ function addPlayer(event) {
   ulList.appendChild(newplayerListItem);
 
   //add to local storage
- LSPlayers(playerInputName.value );
+ LSPlayers(inputValue);
 
   //clear top input value
   inputPlayerName.value = "";
@@ -223,6 +223,9 @@ function deletePlayer(e) {
 
     ulStandings.appendChild(playedListItem);
 
+    // ad place to local storage when cliking  score
+    LSPlaces(placeValue);
+
 
   }
 
@@ -230,7 +233,6 @@ function deletePlayer(e) {
 }
 
 //filter function
-
 function filterScore(e) {
   let AssendingSort = false;
   let result;
@@ -275,7 +277,7 @@ function resetStBtn(e) {
 }
 
 
-//save to local storage
+//save player  name  to local storage
 function LSPlayers(LSPlayer){
   //check if tehre is a list
   let LSPlayers;
@@ -288,6 +290,24 @@ function LSPlayers(LSPlayer){
   localStorage.setItem('LSPlayers', JSON.stringify(LSPlayers));
 
 };
+
+//save palce to local storage on score press
+/* 
+function LSPlaces(LSPlace){
+  let LSPlaces;
+  if(localStorage.getItem('LSPlaces') === null){
+    LSPlaces = [];
+  }else{
+    LSPlaces = JSON.parse(localStorage.getItem('LSPlaces'));
+  }
+  LSPlaces.push(LSPlace);
+  localStorage.setItem('LSPlaces', JSON.stringify(LSPlaces));
+}
+ */
+
+
+
+
 
 //get players from local storage
  function getLsPlayers(){
@@ -357,6 +377,22 @@ function LSPlayers(LSPlayer){
 
   });
  }
+// get places and add to array
+/*  function getPlaces (){
+  let LSPlaces;
+  if(localStorage.getItem('LSPlaces') === null){
+    LSPlaces = [];
+  }else{
+    LSPlaces = JSON.parse(localStorage.getItem('LSPlayeces'));
+  }
+
+  LSPlaces.forEach(function(LSPlace){
+  const playerInputPlace = document.querySelector('.playerplace'); 
+  playerInputPlace.value = LSPlace;
+
+  });
+} */
+
 
  //remove local storage lsplayer
  function removeLS(LSPlayer){
@@ -367,14 +403,12 @@ function LSPlayers(LSPlayer){
     LSPlayers = JSON.parse(localStorage.getItem('LSPlayers'));
     
   }
-  console.log(LSPlayer.children[0].value);
     const playerIndex = LSPlayer.children[0].value;
     LSPlayers.splice(LSPlayers.indexOf(playerIndex),1);
     localStorage.setItem('LSPlayers', JSON.stringify(LSPlayers));
 }
-  /* const PlayerIndex =  *
 
 
 
 
-/*  localStorage.clear() */
+/*   localStorage.clear()  */
