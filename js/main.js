@@ -12,11 +12,13 @@ const resetScoreBtn = document.querySelector('.reset');
 const addPlayerBtn = document.querySelector('.addPlayerBtn');
 const removePlayerBtn = document.querySelector('.removePlayerBtn');
 const filterOption = document.querySelector('.filter');
+const saveObjectBtn = document.querySelector('.savePlayerObject');
 
 // EVENT LISTENERS
 document.addEventListener('DOMContentLoaded', getLsPlayers);
 addPlayerBtn.addEventListener("click", addPlayer);
 listItem.addEventListener("click", deletePlayer);
+saveObjectBtn.addEventListener('click',createPlyerObject);
 
 //add player on push enter
 document.addEventListener('keyup', function (e) {
@@ -203,30 +205,42 @@ function deletePlayer(e) {
     };
 
     //create a list item with scores only
-    const ulStandings = document.getElementById('player-standings');
-
+/*     const ulStandings = document.getElementById('player-standings');
+ */
     //standings list item
-    const playedListItem = document.createElement('li');
-    playedListItem.classList.add('standing-list-item');
-    playedListItem.dataset.indexNumber = ScoreValue.innerText;
+    // const playedListItem = document.createElement('li');
+    // playedListItem.classList.add('standing-list-item');
+    // playedListItem.dataset.indexNumber = ScoreValue.innerText;
 
-    const spanScore = document.createElement('span');
-    spanScore.classList.add('score-span');
-    spanScore.innerHTML = ScoreValue.innerText;
-    playedListItem.appendChild(spanScore);
+    // const spanScore = document.createElement('span');
+    // spanScore.classList.add('score-span');
+    // spanScore.innerHTML = ScoreValue.innerText;
+    // playedListItem.appendChild(spanScore);
 
-    const spanName = document.createElement('span');
-    spanName.classList.add('name-span');
-    spanName.innerHTML = nameValue;
-    playedListItem.appendChild(spanName);
+    // const spanName = document.createElement('span');
+    // spanName.classList.add('name-span');
+    // spanName.innerHTML = nameValue;
+    // playedListItem.appendChild(spanName);
+    // ulStandings.appendChild(playedListItem);
 
+    //ADD PLAYERS TO NEW TABLE
+    const scoreTable = document.getElementById('table-score');
 
-    ulStandings.appendChild(playedListItem);
+    const tableBody = scoreTable.children[1];
+   
+    const tableRow = document.createElement('tr');
+    tableBody.appendChild(tableRow);
 
-    // ad place to local storage when cliking  score
-    LSPlaces(placeValue);
-
-
+    const tableD = document.createElement('td');
+    tableD.innerText = nameValue;
+    tableD.classList.add('st-name');
+    const tableD2 = document.createElement('td');
+    tableD2.classList.add('st-score');
+    tableD2.innerText = ScoreValue.innerText;
+    tableRow.appendChild(tableD);
+    tableRow.appendChild(tableD2);
+    console.log(tableBody);
+  
   }
 
 
@@ -271,9 +285,11 @@ const stResBtn = document.getElementById('st-reset-button');
 stResBtn.addEventListener('click', resetStBtn);
 
 function resetStBtn(e) {
-  const ulStandings = document.getElementById('player-standings');
-  console.log('klciked reset')
-  ulStandings.innerHTML = "";
+  const ulStandings = document.getElementById('table-score');
+  const scoreTable = document.getElementById('table-score');
+  const tableBody = scoreTable.children[1];
+  tableBody.innerHTML = "";
+
 }
 
 
@@ -409,6 +425,73 @@ function LSPlaces(LSPlace){
 }
 
 
+//create player object
+function createPlyerObject(e) {
+  const ulList = document.getElementById('player-list');
+  const item = e.target;
 
+  if (item.classList[2] === 'savePlayerObject'){
+    const ulList = document.getElementById('player-list').children;
+    for (let index = 0; index < ulList.length; index++) {
+      const element = ulList[index];
+      const Name = element.children[0].value;
+      const Place = element.children[1].value;
+      const Kills = element.children[2].value;
+      const Score = element.children[3].innerText;
+
+      var Player = {name : Name , place : Place , kills : Kills , score: Score};
+      
+      
+    }
+    console.log(Player);
+  
+  }
+
+
+}
+//sortable table javascript
+/**
+ * Sorts a HTML table.
+ * 
+ * @param {HTMLTableElement} table The table to sort
+ * @param {number} column The index of the column to sort
+ * @param {boolean} asc Determines if the sorting will be in ascending
+ */
+function sortTableByColumn(table, column, asc = true) {
+  const dirModifier = asc ? 1 : -1;
+  const tBody = table.tBodies[0];
+  const rows = Array.from(tBody.querySelectorAll("tr"));
+
+  // Sort each row
+  const sortedRows = rows.sort((a, b) => {
+      const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+      const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+
+      return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
+  });
+
+  // Remove all existing TRs from the table
+  while (tBody.firstChild) {
+      tBody.removeChild(tBody.firstChild);
+  }
+
+  // Re-add the newly sorted rows
+  tBody.append(...sortedRows);
+
+  // Remember how the column is currently sorted
+  table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
+  table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
+  table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
+}
+
+document.querySelectorAll(".table-sortable th").forEach(headerCell => {
+  headerCell.addEventListener("click", () => {
+      const tableElement = headerCell.parentElement.parentElement.parentElement;
+      const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
+      const currentIsAscending = headerCell.classList.contains("th-sort-asc");
+
+      sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
+  });
+});
 
 /*   localStorage.clear()  */

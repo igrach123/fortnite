@@ -21,10 +21,7 @@
 </header>
   <br>
 
-  <div class="container text-center">
-    <input type="text" class="input-player-name" id="input-value" placeholder="Add New Player"> <button type="submit"
-      class="btn btn-danger addPlayerBtn"> <span class="fa fa-plus"></span> </button>
-  </div>
+  
   <br>
 
   <div class="container-fluid">
@@ -32,27 +29,55 @@
     <div class="player-container row">
 
       <div class="col-sm-8">
+        <div class=" text-center">
+          <input type="text" class="input-player-name" id="input-value" placeholder="Add New Player"> <button type="submit"
+            class="btn btn-danger addPlayerBtn"> <span class="fa fa-plus"></span> </button>
+            <button 
+            class="btn btn-success savePlayerObject"> <span class="fa fa-check"></span> </button>   <button name="reset-st" id="st-reset-button" class="filter btn btn-warning">RS
+            </button> 
+        </div>
         <h5 class="text-center">
           PLAYERS
         </h5>
         <ul class="list-unstyled player-list text-center" id="player-list">
         </ul>
       </div>
-      <div class="col-sm-4">
-        <h5 class="text-center">
-          STANDINGS <button name="best" id="filter-button" class="filter btn btn-success">Top
-          </button>
-          <button name="reset-st" id="st-reset-button" class="filter btn btn-warning">R
-          </button>
-        </h5>
-        <ul id="player-standings" class="list-unstyled text-left">
+    
+      <div class="col-sm-4">  
+        
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">STANDINGS</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">2021 BEST SCORES</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-        </ul>
-
+            <h5 class="text-left">
+              
+            </h5>
+            <table class="table-sortable table table-hover table-dark"  id="table-score">
+              <thead>
+                <tr>
+                  
+                  <th>NAME</th>
+                  <th>SCORE</th>
+                 
+                </tr>
+              </thead>
+              <tbody>                             
+        
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            ALL TIME TOP SCORES COME HERE</div>
+        </div>
       </div>
 
 
-    </div>
+    </div> 
 
 
 

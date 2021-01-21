@@ -41,7 +41,8 @@ li {
   width: 100px;
 }
 .fa-plus,
-.fa-trash {
+.fa-trash,
+.fa-check {
   pointer-events: none;
 }
 
@@ -121,4 +122,59 @@ input.playerkills {
 header {
   background-color: #ffd300;
   padding-bottom: 15px;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  font-weight: 900;
+  color: #ffc107;
+  background-color: inherit;
+  border-color: #dee2e6 #dee2e6 #fff;
+  border: none;
+}
+.nav-item,
+.nav-link {
+  color: #d2dde9;
+}
+.nav-tabs {
+  border-bottom: none;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border-color: inherit;
+  color: #ffc107;
+}
+
+//sortable table css
+.table-sortable th {
+  cursor: pointer;
+}
+
+.table-sortable .th-sort-asc::after {
+  content: "\25b4";
+}
+
+.table-sortable .th-sort-desc::after {
+  content: "\25be";
+}
+
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after {
+  margin-left: 5px;
+}
+
+.table-sortable .th-sort-asc,
+.table-sortable .th-sort-desc {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.st-name {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+.st-score {
+  font-weight: 900;
+  font-size: 1.8rem;
 }

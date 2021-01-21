@@ -1,0 +1,17 @@
+{
+    {name:"igor",
+    place:"3",
+    kills:"5",
+    score:"150"
+    }
+    {name:"marko",
+    place:"2",
+    kills:"5",
+    score:"225"
+    }
+    {name:"filip",
+    place:"4",
+    kills:"3",
+    score:"220"
+    }
+}
